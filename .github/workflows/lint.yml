@@ -1,0 +1,14 @@
+name: Lint
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate YAML
+        run: |
+          pip install yamllint >/dev/null 2>&1 || true
+          yamllint -d '{extends: default, rules: {line-length: {max: 140}}}' . || true

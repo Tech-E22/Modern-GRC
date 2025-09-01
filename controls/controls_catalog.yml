@@ -1,0 +1,26 @@
+# Minimal starter catalog. Expand as needed.
+controls:
+  - id: AC-2
+    name: Account Management
+    objective: "Only authorized users have access with least privilege and periodic reviews."
+    aws_services: [IAM, AWS_Organizations, Identity_Center]
+    mappings:
+      nist_800_53_rev5: ["AC-2", "AC-3", "AC-6"]
+      iso_27001_annex_a_2022: ["A.5.15", "A.5.18"]
+      soc2_tsc: ["CC6.1", "CC6.2"]
+    guardrails:
+      - "All IAM users require MFA (enforce via IAM/Identity Center)."
+      - "No inline policies on users; use groups/roles and managed policies."
+      - "Quarterly access reviews exported and signed-off."
+  - id: AU-2
+    name: Audit Events
+    objective: "Log security-relevant events and retain them for investigations."
+    aws_services: [CloudTrail, CloudWatch_Logs, S3, Security_Hub]
+    mappings:
+      nist_800_53_rev5: ["AU-2", "AU-6", "AU-11"]
+      iso_27001_annex_a_2022: ["A.8.15", "A.8.16"]
+      soc2_tsc: ["CC7.2", "CC7.3"]
+    guardrails:
+      - "Organization-level CloudTrail enabled in all regions with log file validation."
+      - "Trails deliver to centralized S3 with bucket policy blocking public access."
+      - "Security Hub enabled; findings archived only with justification."
