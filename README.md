@@ -9,3 +9,4 @@
 - **Runbooks & Tabletops**: Quick drills for incident, backup/restore, and vendor risk scenarios.
 - **Automation Hooks**: Starters for turning manual checks into pipeline-friendly scripts.
 
+> Tone & intent: **practical, reusable, and AWS-first**.
